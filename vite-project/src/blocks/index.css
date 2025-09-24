@@ -1,1 +1,19 @@
 @import url(../vendor/normalize.css);
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../vendor/CabinetGrotesk-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: medium;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("../vendor/CabinetGrotesk-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: bold;
+}
+
+body {
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+}
