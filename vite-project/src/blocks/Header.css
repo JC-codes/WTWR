@@ -26,6 +26,11 @@
   border: none;
 }
 
+.header__add-clothes-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .header__user-container {
   display: flex;
   align-items: center;
