@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import "../../blocks/ModalWithForm.css";
 import closeIcon from "../../images/close-gray.svg";
 import addGarment from "../../images/addGarment.svg";
