@@ -1,5 +1,5 @@
 import "../../blocks/ItemModal.css";
-import closeIcon from "../../images/close-gray.svg";
+import closeIcon from "../../images/close-white.svg";
 
 function ItemModal({ activeModal, card, handleCloseClick }) {
   return (
