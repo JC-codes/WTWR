@@ -9,8 +9,6 @@ The idea of the application is pretty simple - we make a call to an API, which t
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 - [Github](https://JC-codes.github.io/se_project_react)
 
-![Main Screen](vite-project/public/mainScreen.png)
-
-![Item Modal](vite-project/public/itemModal.png)
-
-![Form Modal](vite-project/public/formModal.png)
+<img width="1920" height="1032" alt="itemModal" src="https://github.com/user-attachments/assets/afb70c84-7c65-4c21-9307-c79f9d03db5f" />
+<img width="1920" height="1032" alt="formModal" src="https://github.com/user-attachments/assets/987dc47e-aeca-4ad5-bcdb-25b090fcb011" />
+<img width="1920" height="1032" alt="mainScreen" src="https://github.com/user-attachments/assets/b6e6cec9-d591-4e92-8385-51b2fee21675" />
