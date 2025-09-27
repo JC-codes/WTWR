@@ -2,7 +2,7 @@
 
 ## About the project
 
-The idea of the application is pretty simple - we make a call to an API, which then responds with the daily weather forecast. We collect the weather data, process it, and then based on the forecast, we recommend suitable clothing to the user using React + JavaScript. Designed with dynamic weather cards based on data gathered from an API.
+The idea of the application is pretty simple - we make a call to an API, which then responds with the daily weather forecast. We collect the weather data, process it, and then based on the forecast, we recommend suitable clothing to the user using React + JavaScript. Designed with dynamic weather cards based on data gathered from an API. More features to come including "likes", switching temperature measurement units, creating new cards and a responsive design.
 
 ## Links
 
