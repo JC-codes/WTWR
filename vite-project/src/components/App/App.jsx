@@ -15,6 +15,8 @@ function App() {
     type: "warm",
     temp: { F: 999, C: 999 },
     city: "Loading...",
+    condition: "clear",
+    isDaytime: true,
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -41,7 +43,6 @@ function App() {
       .then((data) => {
         const processedData = processWeatherData(data);
         setWeatherData(processedData);
-        debugger;
       })
       .catch((error) => {
         console.error("Error fetching weather data:", error);
