@@ -7,9 +7,7 @@ The idea of the application is pretty simple - we make a call to an API, which t
 ## Links
 
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
-
-![Main Screen](vite-project/public/mainScreen.png)
-
-![Item Modal](vite-project/public/itemModal.png)
-
-![Form Modal](vite-project/public/formModal.png)
+- [Github] (https://JC-codes.github.io/se_project_react).
+<img width="1920" height="1032" alt="mainScreen" src="https://github.com/user-attachments/assets/b2dec056-d3ed-46cb-80b2-ed9775ba9da3" />
+<img width="1920" height="1032" alt="itemModal" src="https://github.com/user-attachments/assets/779569e0-801d-4268-898c-33aa7ce44040" />
+<img width="1920" height="1032" alt="formModal" src="https://github.com/user-attachments/assets/79784e7f-6c8c-4c09-89c6-df05319820d7" />
