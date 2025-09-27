@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../../blocks/App.css";
+import { coordinates, APIkey } from "../../utils/constants";
 import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
+import { getWeatherData } from "../../utils/weatherApi.js";
+import { processWeatherData } from "../../utils/weatherApi.js";
 import { getWeatherData } from "../../utils/weatherApi.js";
 import { processWeatherData } from "../../utils/weatherApi.js";
 
@@ -52,6 +56,7 @@ function App() {
   return (
     <div className="app">
       <div className="app__content">
+        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <Footer />
