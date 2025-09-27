@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "../../blocks/App.css";
+import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
+import { getWeatherData } from "../../utils/weatherApi.js";
+import { processWeatherData } from "../../utils/weatherApi.js";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({ type: "hot" });
+  const [weatherData, setWeatherData] = useState({
+    type: "warm",
+    temp: { F: 999, C: 999 },
+    city: "Loading...",
+  });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [selectedWeatherType, setSelectedWeatherType] = useState("");
@@ -29,10 +36,22 @@ function App() {
     setSelectedWeatherType(event.target.value);
   };
 
+  useEffect(() => {
+    getWeatherData(coordinates, APIkey)
+      .then((data) => {
+        const processedData = processWeatherData(data);
+        setWeatherData(processedData);
+        debugger;
+      })
+      .catch((error) => {
+        console.error("Error fetching weather data:", error);
+      });
+  }, []);
+
   return (
     <div className="app">
       <div className="app__content">
-        <Header handleAddClick={handleAddClick} />
+        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
         <Footer />
       </div>

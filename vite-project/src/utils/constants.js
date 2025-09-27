@@ -62,7 +62,7 @@ const defaultClothingItems = [
   {
     _id: 11,
     name: "Shorts",
-    weather: "Hot",
+    weather: "hot",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Shorts.png?etag=d728c496643f610de8d8fea92dd915ba",
   },
   {
@@ -96,5 +96,12 @@ const defaultClothingItems = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
   },
 ];
+
+export const coordinates = {
+  latitude: 45.853,
+  longitude: -122.827,
+};
+
+export const APIkey = "c2e314170ca223084926b4f601fdba30";
 
 export { defaultClothingItems };
