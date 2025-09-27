@@ -3,12 +3,9 @@ import "../../blocks/ModalWithForm.css";
 import closeIcon from "../../images/close-gray.svg";
 import addGarment from "../../images/addGarment.svg";
 
-function ModalWithForm({ children, title, activeModal, handleCloseClick }) {
-  console.log("ModalWithForm - activeModal:", activeModal);
+function ModalWithForm({ children, title, name, isOpen, handleCloseClick }) {
   return (
-    <div
-      className={`modal ${activeModal === "add-garment" ? "modal_opened" : ""}`}
-    >
+    <div className={`modal modaltype${name} ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__container">
         <h2 className="modal__title">{title}</h2>
         <button

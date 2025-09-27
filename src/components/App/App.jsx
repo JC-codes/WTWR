@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 
 import "../../blocks/App.css";
-import { coordinates, APIkey } from "../../utils/constants";
+import {
+  coordinates,
+  APIkey,
+  defaultClothingItems,
+} from "../../utils/constants";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
 import ModalWithForm from "./ModalWithForm";
 import ItemModal from "./ItemModal";
-import { getWeatherData } from "../../utils/weatherApi.js";
-import { processWeatherData } from "../../utils/weatherApi.js";
+import { getWeatherData, processWeatherData } from "../../utils/weatherApi.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -21,6 +24,7 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [selectedWeatherType, setSelectedWeatherType] = useState("");
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -53,7 +57,11 @@ function App() {
     <div className="app">
       <div className="app__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+        />
         <Footer />
       </div>
       <ModalWithForm
@@ -71,7 +79,7 @@ function App() {
           />
         </label>
         <label htmlFor="imageURL" className="modal__label">
-          Image{" "}
+          Image{" Image URL "}
           <input
             type="url"
             className="modal__input"
