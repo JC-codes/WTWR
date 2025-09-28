@@ -76,6 +76,8 @@
 }
 
 .modal__input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
   display: block;
   margin: 8px 0 24px;
   width: 100%;
@@ -131,23 +133,20 @@
 }
 
 .modal__submit {
-  width: 136px;
-  height: 38px;
-  background: transparent;
+  background-color: rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 1);
   border: none;
+  border-radius: 4px;
+  padding: 0;
+  font-size: 16px;
   cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.modal__submit img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 124px;
+  height: 36px;
+  transition: background 0.2s;
 }
 
 .modal__submit:hover {
-  opacity: 0.6;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal__submit:disabled {

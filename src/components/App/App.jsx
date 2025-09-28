@@ -53,6 +53,22 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (event) => {
+      if (event.key === "Escape") {
+        handleCloseClick();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   return (
     <div className="app">
       <div className="app__content">
@@ -65,7 +81,9 @@ function App() {
         <Footer />
       </div>
       <ModalWithForm
+        isOpen={activeModal === "add-garment"}
         title="New Garment"
+        name="add-garment"
         activeModal={activeModal}
         handleCloseClick={handleCloseClick}
       >

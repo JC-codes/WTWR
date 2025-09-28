@@ -18,7 +18,7 @@ function ModalWithForm({ children, title, name, isOpen, handleCloseClick }) {
         <form className="modal__form">
           {children}
           <button type="submit" className="modal__submit">
-            <img src={addGarment} alt="addGarment" />
+            Add Garment
           </button>
         </form>
       </div>
