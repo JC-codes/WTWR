@@ -1,6 +1,7 @@
 import "../../blocks/Header.css";
 import avatar from "../../images/avatar.svg";
 import logo from "../../images/logo.svg";
+import ToggleSwitch from "./ToggleSwitch";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
@@ -15,6 +16,7 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city || "Loading..."}
       </p>
       <div className="header__user-container">
+        <ToggleSwitch />
         <button
           onClick={handleAddClick}
           type="button"

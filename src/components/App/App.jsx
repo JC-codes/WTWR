@@ -21,6 +21,7 @@ function App() {
     condition: "clear",
     isDaytime: true,
   });
+  const [currentTempUnit, setCurrentTempUnit] = useState("C");
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [selectedWeatherType, setSelectedWeatherType] = useState("");

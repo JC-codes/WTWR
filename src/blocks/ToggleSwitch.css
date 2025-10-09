@@ -1,0 +1,74 @@
+.toggle-switch {
+  width: 56px;
+  height: 28px;
+  border: 2px solid rgba(126, 126, 126, 1);
+  border-radius: 20px;
+  cursor: pointer;
+  overflow: visible;
+  position: relative;
+}
+
+.toggle-switch:hover {
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+
+.toggle-switch-checkbox {
+  opacity: 0;
+}
+
+.toggle-switch-checkbox:checked ~ .toggle-switch_circle {
+  left: 26px;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.toggle-switch_circle {
+  background-color: rgba(0, 0, 0, 1);
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border-radius: 50%;
+  left: -2px;
+  top: -2px;
+  z-index: 2;
+  transition: left 0.8s ease;
+}
+
+.toggle-switch-label {
+  font-size: 14px;
+  line-height: 100%;
+  position: absolute;
+  color: rgba(126, 126, 126, 1); /* default: unchecked = grey */
+  top: 8px;
+}
+
+.toggle-switch-label-f {
+  left: 9px;
+  z-index: 3;
+  /* removed hardcoded white */
+}
+
+.toggle-switch-label-c {
+  right: 9px;
+  z-index: 3;
+  /* removed hardcoded semi-black */
+}
+
+/* active label rules: checked side is white, unchecked side is grey */
+.toggle-switch-checkbox:checked ~ .toggle-switch-label-c {
+  color: white;
+}
+
+.toggle-switch-checkbox:not(:checked) ~ .toggle-switch-label-f {
+  color: white;
+}
+
+/* on hover: unchecked label turns black, checked stays white */
+.toggle-switch:hover
+  .toggle-switch-checkbox:not(:checked)
+  ~ .toggle-switch-label-c {
+  color: rgba(0, 0, 0, 1);
+}
+
+.toggle-switch:hover .toggle-switch-checkbox:checked ~ .toggle-switch-label-f {
+  color: rgba(0, 0, 0, 1);
+}
