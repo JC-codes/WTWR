@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import "../../blocks/Main.css";
 import WeatherCard from "../Cards/WeatherCard";
 import ItemCard from "../Cards/ItemCard";
