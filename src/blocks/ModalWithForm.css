@@ -142,11 +142,11 @@
   cursor: pointer;
   width: 124px;
   height: 36px;
-  transition: background 0.2s;
+  transition: opacity 0.3s;
 }
 
 .modal__submit:hover {
-  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0.6;
 }
 
 .modal__submit:disabled {

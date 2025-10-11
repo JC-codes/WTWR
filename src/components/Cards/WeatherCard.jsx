@@ -1,17 +1,13 @@
 import React, { useContext } from "react";
 import CurrentTempUnitContext from "../../Context/CurrentTempUnitContext";
-import { formatTemp } from "../../utils/FormatTemp.js";
 import "../../blocks/WeatherCard.css";
 import {
   weatherConditions,
   defaultWeatherOptions,
 } from "../../utils/constants";
 
-function WeatherCard({ temp, weatherData, ...props }) {
+function WeatherCard({ weatherData }) {
   const { currentTempUnit } = useContext(CurrentTempUnitContext);
-
-  const formattedTemp = formatTemp(temp ?? weatherData?.temp, currentTempUnit);
-  const unit = currentTempUnit === "C" ? "°C" : "°F";
 
   const filteredCondition = weatherConditions.filter((item) => {
     return (
@@ -30,10 +26,9 @@ function WeatherCard({ temp, weatherData, ...props }) {
 
   return (
     <section className="weather-card">
-      <div className="weather-card__temp">
-        {formattedTemp}
-        {unit}
-      </div>
+      <p className="weather-card__temp">
+        {weatherData.temp[currentTempUnit]}°{currentTempUnit}
+      </p>
       <img
         src={weatherOption?.url}
         alt={`${weatherOption?.day ? "day" : "night"}time ${
