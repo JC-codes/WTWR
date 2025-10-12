@@ -47,14 +47,21 @@ function App() {
     setActiveModal("");
   };
 
-  const onAddItem = (inputValues) => {
-    const newItem = {
-      name: inputValues.name,
-      weather: inputValues.weatherType,
-      imageUrl: inputValues.imageURL,
-    };
-    setClothingItems([newItem, ...clothingItems]);
-    setActiveModal("");
+  const onAddItem = (inputValues, resetForm) => {
+    try {
+      const newItem = {
+        name: inputValues.name,
+        weather: inputValues.weatherType,
+        imageUrl: inputValues.imageURL,
+      };
+      setClothingItems((prev) => [newItem, ...prev]);
+      if (typeof resetForm === "function") {
+        resetForm();
+      }
+      setActiveModal("");
+    } catch (err) {
+      console.error("Failed to add item:", err);
+    }
   };
 
   useEffect(() => {
@@ -108,6 +115,7 @@ function App() {
                 <Profile
                   clothingItems={clothingItems}
                   handleCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                 />
               }
             />

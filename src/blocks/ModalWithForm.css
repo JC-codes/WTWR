@@ -72,6 +72,7 @@
 }
 
 .modal__label {
+  position: relative;
   display: block;
 }
 
@@ -83,6 +84,20 @@
   width: 100%;
   height: 20px;
   padding: 0;
+}
+
+#place-name-error {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  color: rgba(255, 77, 0, 1);
+}
+
+#place-link-error {
+  position: absolute;
+  top: 0;
+  left: 85px;
+  color: rgba(255, 77, 0, 1);
 }
 
 .modal__input::placeholder {

@@ -55,3 +55,54 @@
   width: 40px;
   height: 40px;
 }
+
+.header__menu-icon {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-image: url("../images/menu.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header__menu-icon__img {
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .header__user-container {
+    display: none;
+  }
+
+  .header__menu-icon {
+    display: flex;
+    margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 626px) {
+  .header {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 34px;
+    padding: 18px 0 16px;
+  }
+
+  .header__menu-icon {
+    position: absolute;
+    top: 35px;
+    right: 0;
+  }
+
+  .header__date-location {
+    margin: 0;
+    padding: 0;
+  }
+}

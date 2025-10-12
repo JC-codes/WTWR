@@ -32,6 +32,11 @@ function Header({ handleAddClick, weatherData }) {
           <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
         </NavLink>
       </div>
+      <button
+        className="header__menu-icon"
+        type="button"
+        onClick={handleAddClick}
+      ></button>
     </header>
   );
 }

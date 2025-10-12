@@ -2,3 +2,11 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 727px) {
+  .profile {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

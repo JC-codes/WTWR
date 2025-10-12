@@ -4,8 +4,8 @@
 
 .cards__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(283px, 1fr));
-  grid-auto-rows: 325px;
+  grid-template-columns: repeat(auto-fit, minmax(164px, 325px));
+  grid-auto-rows: minmax(auto, 325px);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -14,5 +14,35 @@
 }
 
 .cards__text {
+  font-size: 20px;
+  line-height: 100%;
+  font-weight: 700;
   margin: 40px 0 34px;
+}
+
+@media screen and (max-width: 1400px) {
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+    grid-auto-rows: minmax(auto, 1fr);
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+    grid-auto-rows: minmax(auto, 1fr);
+    gap: 15px;
+  }
+}
+
+@media screen and (max-width: 626px) {
+  .cards__text {
+    margin: 32px 0 20px;
+  }
+
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+    grid-auto-rows: auto;
+    gap: 15px;
+  }
 }
