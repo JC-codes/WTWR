@@ -14,6 +14,7 @@ import AddItemModal from "./AddItemModal.jsx";
 import ItemModal from "./ItemModal";
 import { getWeatherData, processWeatherData } from "../../utils/weatherApi.js";
 import CurrentTempUnitContext from "../../Context/CurrentTempUnitContext.jsx";
+import Profile from "./Profile.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -101,7 +102,15 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<p>profile</p>} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            />
           </Routes>
           <Footer />
         </div>
