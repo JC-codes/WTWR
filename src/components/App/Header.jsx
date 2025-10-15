@@ -1,17 +1,46 @@
+import React, { useState, useRef, useEffect } from "react";
 import "../../blocks/Header.css";
 import avatar from "../../images/avatar.svg";
 import logo from "../../images/logo.svg";
 import ToggleSwitch from "./ToggleSwitch";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import MenuModal from "./MenuModal";
 
 function Header({ handleAddClick, weatherData }) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+  const username = "Terrence Tegegne";
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+  const location = useLocation();
+  const isProfile =
+    location.pathname === "/profile" ||
+    location.pathname.startsWith("/profile/");
+
+  useEffect(() => {
+    function handleOutsideClick(e) {
+      if (
+        menuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target)
+      ) {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [menuOpen]);
+
+  const toggleMenu = () => setMenuOpen((v) => !v);
 
   return (
-    <header className="header">
+    <header className={`header ${isProfile ? "header--profile" : ""}`}>
       <NavLink to="/" className="header__logo-link">
         <img src={logo} alt="Logo" className="header__logo" />
       </NavLink>
@@ -28,15 +57,24 @@ function Header({ handleAddClick, weatherData }) {
           + Add clothes
         </button>
         <NavLink to="/profile" className="header__profile-link">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+          <p className="header__username">{username}</p>
+          <img src={avatar} alt={username} className="header__avatar" />
         </NavLink>
       </div>
       <button
         className="header__menu-icon"
         type="button"
-        onClick={handleAddClick}
+        onClick={toggleMenu}
+        ref={buttonRef}
       ></button>
+      <MenuModal
+        isOpen={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        modalRef={menuRef}
+        username={username}
+        avatar={avatar}
+        handleAddClick={handleAddClick}
+      />
     </header>
   );
 }

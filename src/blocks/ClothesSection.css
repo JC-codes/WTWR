@@ -1,7 +1,6 @@
 .clothes-section {
   width: 100%;
   flex-grow: 1;
-  margin-left: 116px;
 }
 
 .clothes-section__row {
@@ -51,6 +50,13 @@
     overflow: hidden;
   }
 }
+
+@media screen and (max-width: 1050px) {
+  .clothes-section__row {
+    justify-content: space-between;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .clothes-section__items {
     grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));

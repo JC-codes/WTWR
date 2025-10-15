@@ -16,13 +16,15 @@
 .header__date-location {
   line-height: 24px;
   margin: 0 0 0 24px;
-  padding: 11px 0 5px;
+  padding: 8px 0 5px;
 }
 
 .header__add-clothes-btn {
   line-height: 24px;
   padding: 0;
   border: none;
+  background: transparent;
+  font-weight: 700;
 }
 
 .header__add-clothes-btn:hover {
@@ -75,7 +77,7 @@
   display: block;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 820px) {
   .header__user-container {
     display: none;
   }
@@ -83,6 +85,19 @@
   .header__menu-icon {
     display: flex;
     margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .header.header--profile {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px;
+  }
+
+  .header__date-location {
+    font-size: 16px;
+    line-height: 100%;
   }
 }
 
@@ -97,12 +112,17 @@
 
   .header__menu-icon {
     position: absolute;
-    top: 35px;
+    top: 18px !important;
     right: 0;
   }
 
   .header__date-location {
     margin: 0;
     padding: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .header {
   }
 }

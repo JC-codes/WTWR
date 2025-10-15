@@ -11,7 +11,7 @@
   padding: 20px;
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .modal_opened {
@@ -29,12 +29,13 @@
   box-sizing: border-box;
   width: 100%;
   padding: 28px 28px 36px;
-  transform: scale(0.95);
-  transition: transform 0.3s ease;
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .modal_opened .modal__container {
-  transform: scale(1);
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
 .modal__form {
@@ -167,4 +168,24 @@
 .modal__submit:disabled {
   cursor: default;
   opacity: 0.3;
+}
+
+@media screen and (max-width: 626px) {
+  .modal {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal__container {
+    width: calc(
+      100vw - env(safe-area-inset-left, 0) - env(safe-area-inset-right, 0)
+    );
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    border-radius: 12px 12px 0 0;
+    padding: 20px 16px 28px;
+    max-height: 100%;
+    overflow-y: auto;
+  }
 }

@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "../../blocks/App.css";
-import {
-  coordinates,
-  APIkey,
-  defaultClothingItems,
-} from "../../utils/constants";
+import { coordinates, APIkey } from "../../utils/constants";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
@@ -15,6 +11,7 @@ import ItemModal from "./ItemModal";
 import { getWeatherData, processWeatherData } from "../../utils/weatherApi.js";
 import CurrentTempUnitContext from "../../Context/CurrentTempUnitContext.jsx";
 import Profile from "./Profile.jsx";
+import { getItems } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,7 +24,7 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
@@ -76,16 +73,23 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (!activeModal) return;
+    getItems()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((error) => {
+        console.error("Error fetching clothing items:", error);
+      });
+  }, []);
 
+  useEffect(() => {
+    if (!activeModal) return;
     const handleEscClose = (event) => {
       if (event.key === "Escape") {
         handleCloseClick();
       }
     };
-
     document.addEventListener("keydown", handleEscClose);
-
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
@@ -127,6 +131,7 @@ function App() {
           onAddItem={onAddItem}
           onClose={handleCloseClick}
         ></AddItemModal>
+
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
