@@ -61,6 +61,7 @@
   background: transparent;
   cursor: pointer;
   opacity: 0.5;
+  transition: opacity 0.3s ease;
 }
 
 .modal__close:hover {

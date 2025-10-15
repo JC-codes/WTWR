@@ -11,7 +11,7 @@ import ItemModal from "./ItemModal";
 import { getWeatherData, processWeatherData } from "../../utils/weatherApi.js";
 import CurrentTempUnitContext from "../../Context/CurrentTempUnitContext.jsx";
 import Profile from "./Profile.jsx";
-import { getItems } from "../../utils/api.js";
+import { getItems, addItem, removeItem } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -44,22 +44,31 @@ function App() {
     setActiveModal("");
   };
 
-  const onAddItem = (inputValues, resetForm) => {
-    try {
-      const newItem = {
-        name: inputValues.name,
-        weather: inputValues.weatherType,
-        imageUrl: inputValues.imageURL,
-      };
-      setClothingItems((prev) => [newItem, ...prev]);
-      if (typeof resetForm === "function") {
-        resetForm();
-      }
-      setActiveModal("");
-    } catch (err) {
-      console.error("Failed to add item:", err);
-    }
+  const handleDelete = (cardId) => {
+    removeItem(cardId)
+      .then(() => {
+        setClothingItems((prev) =>
+          prev.filter((item) => item._id !== cardId && item.id !== cardId)
+        );
+      })
+      .catch((error) => console.error(error));
   };
+
+  function onAddItem(inputValues, resetForm) {
+    const newItem = {
+      name: inputValues.name,
+      weather: inputValues.weatherType,
+      imageUrl: inputValues.imageURL,
+    };
+
+    addItem(newItem, resetForm)
+      .then((createdItem) => {
+        setClothingItems(() => [createdItem, ...clothingItems]);
+        resetForm();
+        setActiveModal("");
+      })
+      .catch(console.error);
+  }
 
   useEffect(() => {
     getWeatherData(coordinates, APIkey)
@@ -75,7 +84,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
-        setClothingItems(items);
+        setClothingItems(() => [...items].reverse());
       })
       .catch((error) => {
         console.error("Error fetching clothing items:", error);
@@ -136,6 +145,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           handleCloseClick={handleCloseClick}
+          handleDelete={handleDelete}
         />
       </div>
     </CurrentTempUnitContext.Provider>

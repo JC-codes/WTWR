@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "../../blocks/ItemModal.css";
 import closeIcon from "../../images/close-white.svg";
+import DeleteConfirmModal from "./DeleteConfirmModal.jsx";
+import deleteIcon from "../../images/itemDelete.svg";
 
-function ItemModal({ activeModal, card, handleCloseClick }) {
+function ItemModal({ activeModal, card, handleCloseClick, handleDelete }) {
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   return (
@@ -29,10 +31,28 @@ function ItemModal({ activeModal, card, handleCloseClick }) {
           className="item__modal__image"
         />
         <div className="item__modal__footer">
-          <h2 className="item__modal__image-title">{card.name}</h2>
-          <p className="item__modal__weather">Weather: {card.weather}</p>
+          <div className="item__modal__info">
+            <h2 className="item__modal__image-title">{card.name}</h2>
+            <p className="item__modal__weather">Weather: {card.weather}</p>
+          </div>
+          <button
+            type="button"
+            className="item__modal__delete-btn"
+            onClick={() => setIsConfirmOpen(true)}
+          >
+            <img src={deleteIcon} alt="Delete" />
+          </button>
         </div>
       </div>
+      <DeleteConfirmModal
+        isOpen={isConfirmOpen}
+        onClose={() => setIsConfirmOpen(false)}
+        onConfirm={() => {
+          handleDelete(card._id);
+          setIsConfirmOpen(false);
+          handleCloseClick();
+        }}
+      />
     </div>
   );
 }

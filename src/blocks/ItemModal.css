@@ -36,11 +36,20 @@
 
 .item__modal__footer {
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px 32px 32px;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
   color: rgba(0, 0, 0, 1);
+}
+
+.item__modal__footer__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .item__modal__image-title {
@@ -50,6 +59,14 @@
 
 .item__modal__weather {
   margin: 0;
+}
+
+.item__modal__delete-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
+  align-self: flex-start;
 }
 
 .item__modal__close {
