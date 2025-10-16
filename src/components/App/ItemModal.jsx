@@ -48,9 +48,12 @@ function ItemModal({ activeModal, card, handleCloseClick, handleDelete }) {
         isOpen={isConfirmOpen}
         onClose={() => setIsConfirmOpen(false)}
         onConfirm={() => {
-          handleDelete(card._id);
-          setIsConfirmOpen(false);
-          handleCloseClick();
+          handleDelete(card._id)
+            .then(() => {
+              setIsConfirmOpen(false);
+              handleCloseClick();
+            })
+            .catch((error) => console.error(error));
         }}
       />
     </div>

@@ -13,6 +13,7 @@ function ToggleSwitch() {
         type="checkbox"
         className="toggle__switch-checkbox"
         onChange={handleToggleSwitchChange}
+        checked={currentTempUnit === "C"}
       />
       <span className="toggle__switch-circle"></span>
       <span
