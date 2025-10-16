@@ -14,3 +14,8 @@ The idea of the application is pretty simple and responsive - we make a call to 
 ![alt text](public/formModal.png)
 ![alt text](public/mobile.png)
 ![alt text](public/profile.png)
+
+## Project Pitch Video
+
+Check out [this video](https://drive.google.com/file/d/1BS4SQy4XgovdUpF3pNPS2hGKhWhaL7L0/view?usp=drive_link), where I describe my
+project and some challenges I faced while building it.
