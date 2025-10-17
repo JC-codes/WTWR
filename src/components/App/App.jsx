@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "../../blocks/App.css";
-import { coordinates, APIkey } from "../../utils/constants";
+import { coordinates, apiKey } from "../../utils/constants";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
@@ -71,7 +71,7 @@ function App() {
   }
 
   useEffect(() => {
-    getWeatherData(coordinates, APIkey)
+    getWeatherData(coordinates, apiKey)
       .then((data) => {
         const processedData = processWeatherData(data);
         setWeatherData(processedData);
