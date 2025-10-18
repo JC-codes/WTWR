@@ -14,13 +14,13 @@ export const getItems = () => {
   return fetch(`${baseUrl}/items`, { headers }).then(handleServerResponse);
 };
 
-export const addItem = ({ name, imageUrl, weather }) => {
+export const addItem = ({ name, imageURL, weather }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers,
     body: JSON.stringify({
       name,
-      imageUrl,
+      imageURL,
       weather,
     }),
   }).then(handleServerResponse);

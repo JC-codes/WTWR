@@ -58,7 +58,7 @@ function App() {
     const newItem = {
       name: inputValues.name,
       weather: inputValues.weatherType,
-      imageUrl: inputValues.imageURL,
+      imageURL: inputValues.imageURL,
     };
 
     addItem(newItem, resetForm)

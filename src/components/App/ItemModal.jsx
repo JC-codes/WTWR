@@ -26,14 +26,14 @@ function ItemModal({ activeModal, card, handleCloseClick, handleDelete }) {
           />
         </button>
         <img
-          src={card.imageUrl}
+          src={card.imageURL}
           alt={card.name}
           className="item__modal__image"
         />
         <div className="item__modal__footer">
           <div className="item__modal__info">
             <h2 className="item__modal__image-title">{card.name}</h2>
-            <p className="item__modal__weather">Weather: {card.weather}</p>
+            <p className="item__modal__weather">Weather: {card.weatherType}</p>
           </div>
           <button
             type="button"
