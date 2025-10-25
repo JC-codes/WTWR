@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "../../blocks/App.css";
-import { coordinates, apiKey } from "../../utils/constants";
+import { apiKey } from "../../utils/constants";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
@@ -26,6 +26,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTempUnit, setCurrentTempUnit] = useState("F");
+  const [locationError, setLocationError] = useState(null);
 
   const handleToggleSwitchChange = () => {
     setCurrentTempUnit(currentTempUnit === "F" ? "C" : "F");
@@ -70,15 +71,60 @@ function App() {
       .catch(console.error);
   }
 
+  const getUserLocation = () => {
+    if (!navigator.geolocation) {
+      setLocationError("Geolocation is not supported by this browser.");
+      setWeatherData((prev) => ({ ...prev, city: "Location unavailable" }));
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const coordinates = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
+
+        getWeatherData(coordinates, apiKey)
+          .then((data) => {
+            const processedData = processWeatherData(data);
+            setWeatherData(processedData);
+            setLocationError(null);
+          })
+          .catch((error) => {
+            console.error("Error fetching weather data:", error);
+            setLocationError("Failed to get weather data");
+            setWeatherData((prev) => ({
+              ...prev,
+              city: "Weather unavailable",
+            }));
+          });
+      },
+      (error) => {
+        console.error("Error getting location:", error);
+        let errorMessage;
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            errorMessage = "Location access denied by user.";
+            break;
+          case error.POSITION_UNAVAILABLE:
+            errorMessage = "Location information is unavailable.";
+            break;
+          case error.TIMEOUT:
+            errorMessage = "Location request timed out.";
+            break;
+          default:
+            errorMessage = "An unknown error occurred.";
+            break;
+        }
+        setLocationError(errorMessage);
+        setWeatherData((prev) => ({ ...prev, city: "Location failed" }));
+      }
+    );
+  };
+
   useEffect(() => {
-    getWeatherData(coordinates, apiKey)
-      .then((data) => {
-        const processedData = processWeatherData(data);
-        setWeatherData(processedData);
-      })
-      .catch((error) => {
-        console.error("Error fetching weather data:", error);
-      });
+    getUserLocation();
   }, []);
 
   useEffect(() => {
@@ -110,6 +156,9 @@ function App() {
     >
       <div className="app">
         <div className="app__content">
+          {locationError && (
+            <div className="location-error">Error: {locationError}</div>
+          )}
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
           <Routes>
             <Route
